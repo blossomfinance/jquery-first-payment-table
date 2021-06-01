@@ -1,0 +1,35 @@
+{
+  "name": "jquery-first-payment-table",
+  "version": "0.1.0",
+  "description": "Shows time to first payment for Blossom profit sharing based on when funds received",
+  "main": "jquery.first-payment-table.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blossomfinance/jquery-first-payment-table.git"
+  },
+  "keywords": [
+    "jQuery",
+    "blossom",
+    "finance",
+    "islamic",
+    "finance",
+    "shariah",
+    "microfinance",
+    "investment",
+    "investing"
+  ],
+  "author": "Matthew J. Martin <matthew@blossomfinance.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blossomfinance/jquery-first-payment-table/issues"
+  },
+  "homepage": "https://github.com/blossomfinance/jquery-first-payment-table#readme",
+  "dependencies": {
+    "@blossomfinance/bootstrap-theme": "^0.18.0",
+    "jquery": "^3.6.0",
+    "moment": "^2.29.1"
+  }
+}

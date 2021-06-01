@@ -2,6 +2,9 @@
 'use strict';
 (function() {
 
+  var elementSelector = window.BLOSSOM_PAYMENT_DATES_CONTAINER || '#payment-dates-container';
+  var libsUrlBase = window.BLOSSOM_PAYMENT_DATES_DOMAIN || '';
+
   function loadScriptIfAbsent(opts) {
     var name = opts.name;
     var src = opts.src;
@@ -80,24 +83,22 @@
     for (var key in loaded) {
       allLoaded = allLoaded && loaded[key];
     }
-    console.log('allLoaded:', allLoaded, loaded);
     if (!allLoaded) {
       return;
     }
-    var elementSelector = window.BLOSSOM_PAYMENT_DATES_CONTAINER || '#payment-dates-container';
     jQuery.fn.profitPaymentDates = profitPaymentDates;
     jQuery(elementSelector).profitPaymentDates();
   };
-
+  
   loadScriptIfAbsent({
     name: 'jQuery',
-    src: 'https://code.jquery.com/jquery-3.6.0.slim.min.js',
+    src: libsUrlBase + 'node_modules/jquery/dist/jquery.min.js',
     callback: initWhenLoaded
   });
 
   loadScriptIfAbsent({
     name: 'moment',
-    src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js',
+    src: libsUrlBase + 'node_modules/moment/moment.js',
     callback: initWhenLoaded
   });
 

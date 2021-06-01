@@ -4,6 +4,7 @@
   "description": "Shows time to first payment for Blossom profit sharing based on when funds received",
   "main": "jquery.first-payment-table.js",
   "scripts": {
+    "build": "mkdir -p dist && cp index.html dist/ && cp jquery.first-payment-table.js dist/ && cp node_modules/jquery/dist/jquery.min.js dist/ && cp node_modules/moment/moment.js dist/ && cp node_modules/@blossomfinance/bootstrap-theme/styleguide/all.clean.css dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

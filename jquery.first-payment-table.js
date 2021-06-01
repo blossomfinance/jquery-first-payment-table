@@ -89,16 +89,16 @@
     jQuery.fn.profitPaymentDates = profitPaymentDates;
     jQuery(elementSelector).profitPaymentDates();
   };
-  
+
   loadScriptIfAbsent({
     name: 'jQuery',
-    src: libsUrlBase + 'node_modules/jquery/dist/jquery.min.js',
+    src: libsUrlBase + 'jquery.min.js',
     callback: initWhenLoaded
   });
 
   loadScriptIfAbsent({
     name: 'moment',
-    src: libsUrlBase + 'node_modules/moment/moment.js',
+    src: libsUrlBase + 'moment.js',
     callback: initWhenLoaded
   });
 

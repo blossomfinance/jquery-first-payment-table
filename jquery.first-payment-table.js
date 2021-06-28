@@ -26,7 +26,7 @@
     var FORMAT = 'MMM D';
     var tableHtml = '<table class="table table-striped table-sm"><thead><tr><th>Funds Received</th><th>1st Cycle Starts</th><th>1st Cycle Ends</th><!-- <th>Pro-Rata Share</th> --><th>1st Payment</th><!-- th>2nd Payment</th --></tr></thead><tbody></tbody></table>';
     var now = moment().startOf('day');
-    var startDate = now.clone().subtract(20, 'days');
+    var startDate = now.clone().subtract(50, 'days');
     var endDate = now.clone().add(10, 'days');
     var fundsReceived = startDate.clone();
     var rows = '';

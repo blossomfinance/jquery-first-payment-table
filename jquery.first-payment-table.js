@@ -24,7 +24,8 @@
 
   var profitPaymentDates = function() {
     var FORMAT = 'MMM D';
-    var tableHtml = '<table class="table table-striped table-sm"><thead><tr><th>Funds Received</th><th>1st Cycle Starts</th><th>1st Cycle Ends</th><!-- <th>Pro-Rata Share</th> --><th>1st Payment</th><!-- th>2nd Payment</th --></tr></thead><tbody></tbody></table>';
+    var MONTHLY_PAYMENT_DROP = 15;
+    var tableHtml = '<table class="table table-striped table-sm"><thead><tr><th>Funds Received</th><th>1st Cycle Starts</th><th>1st Cycle Ends</th><!-- <th>Pro-Rata Share</th> --><th>1st Payment Credited</th><th>Payment Notification</th><!-- th>2nd Payment</th --></tr></thead><tbody></tbody></table>';
     var now = moment().startOf('day');
     var startDate = now.clone().subtract(50, 'days');
     var endDate = now.clone().add(10, 'days');
@@ -39,8 +40,9 @@
       }
       var daysInMonth = periodStart.daysInMonth();
       var periodEnd = periodStart.clone().date(daysInMonth).endOf('day');
-      var firstPayment = periodEnd.clone().add(1, 'days');
-      var secondPayment = firstPayment.clone().add(1, 'month');
+      var firstPaymentCredited = periodEnd.clone().add(1, 'days');
+      var firstPaymentMade = firstPaymentCredited.clone().date(MONTHLY_PAYMENT_DROP);
+      var secondPayment = firstPaymentCredited.clone().add(1, 'month');
       var daysInPeriod = Math.round(periodEnd.diff(periodStart, 'days', true));
       if (fundsReceived.isAfter(cutoff, 'day')) {
         daysInPeriod += 1;
@@ -51,7 +53,8 @@
       var firstCycleStartsCell = '<td>' + periodStart.clone().format(FORMAT) + '</td>';
       var firstCycleEndsCell = '<td>' + periodEnd.add(1, 'day').subtract(1, 'day').format(FORMAT) + '</td>';
       // var proRataShareCell = '<td>' + proRata + '% (' + daysInPeriod + ' of ' + daysInMonth + ' Days)</td>';
-      var firstPaymentOnCell = '<td>' + firstPayment.format(FORMAT) + '</td>';
+      var firstPaymentCreditedOnCell = '<td>' + firstPaymentCredited.format(FORMAT) + '</td>';
+      var firstPaymentMadeOnCell = '<td>' + firstPaymentMade.format(FORMAT) + '</td>';
       // var secondPaymentOnCell = '<td>' + secondPayment.format(FORMAT) + '</td>';
 
       var rowStart = fundsReceived.isSame(now, 'day') ?
@@ -61,7 +64,8 @@
         firstCycleStartsCell +
         firstCycleEndsCell +
         // proRataShareCell +
-        firstPaymentOnCell +
+        firstPaymentCreditedOnCell +
+        firstPaymentMadeOnCell +
         // secondPaymentOnCell +
         '</tr>';
     }
